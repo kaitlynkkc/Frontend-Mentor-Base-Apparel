@@ -1,23 +1,17 @@
-// const submit = document.getElementById("email");
-
-// submit.addEventListener("click", function() {
-//     this.style.background = "linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%))";
-//   });
-// const email = document.getElementById("email");
-
-// document.getElementById("submit").addEventListener("click", () => {
-//     email.style.borderColor = "hsl(0, 93%, 68%)";
-//     invalid.visibility = "visible";
-//     this.style.background = "linear-gradient(135deg, hsl(0, 80%, 95%), hsl(0, 80%, 86%))";
-//   });
-
 function validateForm() {
+    // RFC 5322-compliant Regular Expression
+    let regex = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])");
     let x = document.forms["emailForm"]["email"].value;
-    if (x == "") {
+    if (x == "" || !(regex.test(x))) {
         document.getElementById("email").style.borderColor = "hsl(0, 93%, 68%)";
         document.getElementById("invalid").hidden = false;
         document.getElementById("error").hidden = false;
-        document.getElementById("submit").style.background = "linear-gradient(135deg, hsl(0, 80%, 95%), hsl(0, 80%, 86%))";
+        // console.log("empty");
+        // console.log(x);
         return false;
+    } else {
+        // console.log(email);
+        // console.log("valid");
+        return true;
     }
-  }
+}
